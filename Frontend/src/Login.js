@@ -6,7 +6,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevents the default form submission
-    navigate('/sign-in'); 
+    navigate('/main'); 
   };
 
   return (

@@ -11,7 +11,7 @@ export default function MedicationList() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Implement your logic for adding medication here
-    navigate('/sign-in'); // Optionally navigate back to the main page
+    navigate('/main'); // Optionally navigate back to the main page
   };
 
   return (
