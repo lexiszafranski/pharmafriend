@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import dog1 from './images/dog1.png';
-import dog2 from './images/dog2.png';
-import dog3 from './images/dog3.png';
-import dog4 from './images/dog4.png';
-import dog5 from './images/dog5.png';
+import dog1 from './images/1.png';
+import dog2 from './images/2.png';
+import dog3 from './images/3.png';
+import dog4 from './images/4.png';
+import dog5 from './images/5.png';
 
 const dogImages = [dog1, dog2, dog3, dog4, dog5];
 
