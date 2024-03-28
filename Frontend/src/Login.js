@@ -1,13 +1,22 @@
-import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
   let navigate = useNavigate();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents the default form submission
-    navigate('/main'); 
-  };
+    e.preventDefault();
+    axios.post('http://localhost:4000', {email: email, password: password})
+    .then((data) => {
+      console.log(data)
+      setEmail('')
+      setPassword('')
+    })
+    navigate('/main');
+  }
 
   return (
     <div className="container" style={{ maxWidth: '400px', margin: 'auto', marginTop: '50px' }}>
@@ -16,11 +25,11 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="inputEmail">Email address</label>
-          <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
+          <input type="email" id="inputEmail" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email address" required autoFocus />
         </div>
         <div className="form-group">
           <label htmlFor="inputPassword">Password</label>
-          <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
+          <input type="password" id="inputPassword" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" placeholder="Password" required />
         </div>
         <div className="checkbox mb-3" style={{ textAlign: 'left' }}>
           <label>
