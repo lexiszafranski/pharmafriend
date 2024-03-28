@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function MedicationList() {
   const [name, setName] = useState('');
@@ -11,8 +12,12 @@ export default function MedicationList() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Implement your logic for adding medication here
-    navigate('/main'); // Optionally navigate back to the main page
-  };
+    axios.post('http://localhost:4000/add-medication', {name: name, dose: dose, start_date: start_date, end_date: end_date})
+    .then((data) => {
+      console.log(data)
+    })
+    navigate('/main');
+  }
 
   return (
     <div className="medication-form-container" style={{ padding: "20px" }}>
@@ -23,7 +28,7 @@ export default function MedicationList() {
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </label>
         <label>
-          Dose: 
+          Times Per Day/Doseage: 
           <input type="text" value={dose} onChange={(e) => setDose(e.target.value)} />
         </label>
         <label>

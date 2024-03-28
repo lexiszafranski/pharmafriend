@@ -31,24 +31,27 @@ app.post('/', (req, res) => {
         }
    })
 })
-/*
+
 // lets the user add medication and stores it in the database
-app.post('/add_Medication', (req, res) => {
-    const{prescriptionName, timesPerDay, startDate, endDate} = req.body;
+app.post('/add-medication', (req, res) => {
+    const name = req.body.name;
+    const dose = req.body.dose;
+    const start_date = req.body.start_date;
+    const end_date = req.body.end_date;
 
-    db.query('INSERT INTO medicineinfo (prescriptionName, timesPerDay, startDate, endDate) VALUES (?, ?, ?, ?, ?)',
-    [prescriptionName, timesPerDay, startDate, endDate], (err, result) => {
-        if(err) {
-            console.log(err);
-            res.status(500).send("Error adding medication");
-        } else {
-            res.send("Medication added successfully!");
+    db.query("INSERT INTO medicineinfo (prescriptionName, timesPerDay, startDate, endDate) VALUES (?, ?, ?, ?)", 
+    [name, dose, start_date, end_date], (err, result) => {
+        if (err) {
+            console.log(err)
         }
-    });
-});
+        else {
+            res.send({name: name, dose: dose, start_date: start_date, end_date: end_date})
+        }
+    })
+})
 
 
-*/
+
 // updates the app
 app.listen(4000, ()=> {
     console.log("listening on port 4000");
