@@ -17,9 +17,15 @@ function Login() {
     })
     navigate('/main');
   }
+  
+  const handleFAQ = () => {
+    navigate('/faq'); // Use the correct route for logout
+  };
+
 
   return (
     <div className="container" style={{ maxWidth: '400px', margin: 'auto', marginTop: '50px' }}>
+      <button onClick={handleFAQ} style={{ position: 'absolute', top: 20, right: 80 }}>FAQ Page</button>
       <h2 style={{ textAlign: 'center', fontSize: '2rem', color: '#333', marginBottom: '40px', fontFamily: "'Trykker', serif" }}>Welcome to PharmaFriend</h2>
       <h3 style={{ textAlign: 'center', margin: '20px 0', fontWeight: 'normal' }}>Log in/Sign Up</h3>
       <form onSubmit={handleSubmit}>
