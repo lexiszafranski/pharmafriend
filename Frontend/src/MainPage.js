@@ -22,9 +22,15 @@ export default function MainPage() {
     navigate('/'); // Use the correct route for logout
   };
 
+  const handleFAQ = () => {
+    navigate('/faq'); // Use the correct route for logout
+  };
+
+
   return (
     <div style={{ padding: '20px', maxWidth: '1200px', margin: 'auto', textAlign: 'center', backgroundColor: 'lavender' }}>
        <button onClick={handleLogout} style={{ position: 'absolute', top: 20, right: 20 }}>Logout</button>
+       <button onClick={handleFAQ} style={{ position: 'absolute', top: 20, right: 80 }}>FAQ Page</button>
        <h1 style={{ textAlign: 'center', fontSize: '2rem', color: '#333', marginBottom: '40px', fontFamily: "'Trykker', serif" }}>PharmaFriend</h1>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div style={{ flex: 1, marginRight: '20px' }}>
