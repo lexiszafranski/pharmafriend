@@ -9,11 +9,13 @@
   font-style: normal;
 }
 
-.seaweed-script-regular {
-  font-family: "Seaweed Script", cursive;
+.style-script-regular {
+  font-family: "Style Script", cursive;
   font-weight: 400;
   font-style: normal;
 }
+
+
 
 .App-logo {
   height: 40vmin;
