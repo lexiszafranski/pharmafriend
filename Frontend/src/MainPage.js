@@ -28,16 +28,16 @@ export default function MainPage() {
 
 
   return (
-    <div style={{ padding: '20px', maxWidth: '1200px', margin: 'auto', textAlign: 'center', backgroundColor: 'lavender' }}>
-       <button onClick={handleLogout} style={{ position: 'absolute', top: 20, right: 20 }}>Logout</button>
-       <button onClick={handleFAQ} style={{ position: 'absolute', top: 20, right: 80 }}>FAQ Page</button>
-       <h1 style={{ textAlign: 'center', fontSize: '2rem', color: '#333', marginBottom: '40px', fontFamily: "'Trykker', serif" }}>PharmaFriend</h1>
+    <div style={{ padding: '20px', maxWidth: '1200px', margin: 'auto', textAlign: 'center', backgroundColor: '#D1D8DE' }}>
+       <button onClick={handleLogout} className="button-54" style={{ position: 'absolute', top: 20, right: 165 }}>Logout</button>
+       <button onClick={handleFAQ} className="button-54" style={{ position: 'absolute', top: 20, right: 20 }}>FAQ Page</button>
+       <h2 style={{ fontSize: "35px", color: 'black', marginBottom: '40px', fontFamily: "'Work Sans', sans-serif" }}>P H A R M A F R I E N D</h2>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div style={{ flex: 1, marginRight: '20px' }}>
-          <h2 style={{ marginBottom: '15px' }}>Your Medication List</h2>
+          <h2 style={{ marginBottom: '15px', fontFamily: "Trykker, serif" }}>Your Medication List</h2>
           {/* Placeholder for medication list */}
           <div style={{ marginBottom: '20px' }}>
-            <Link to="/add-medication" style={{ textDecoration: 'none', color: '#007bff' }}>Add Medication</Link>
+            <Link to="/add-medication" className="button-54" style={{ textDecoration: 'none', color: 'black' }}>Add Medication</Link>
           </div>
         </div>
         <div style={{ flex: 2, textAlign: 'center' }}>
@@ -45,7 +45,7 @@ export default function MainPage() {
         </div>
       </div>
       <div style={{ textAlign: 'center' }}>
-        <button onClick={logMedication} style={{ backgroundColor: '#007bff', color: 'white', padding: '10px 20px', fontSize: '16px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Log Medication</button>
+        <button onClick={logMedication} className="button-54" style={{ backgroundColor: 'pink', color: 'white', padding: '10px 20px', fontSize: '16px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Log Medication</button>
       </div>
     </div>
   );
