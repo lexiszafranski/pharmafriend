@@ -21,7 +21,9 @@ export default function MedicationList() {
 
   return (
     <div className="medication-form-container" style={{ padding: "20px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Add Medication</h1>
+      <h2 style={{ fontSize: "35px", color: 'black', marginBottom: '40px', fontFamily: "'Work Sans', sans-serif", textAlign: 'center' }}>P H A R M A F R I E N D</h2>
+      <h3 style={{ textAlign: "center", padding: "0px"}}>A D D</h3>
+      <h3 style={{ textAlign: "center", marginBottom: "30px" }}>M E D I C A T I O N</h3>
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <label>
           Medication Name: 
@@ -39,7 +41,7 @@ export default function MedicationList() {
           End Date: 
           <input type="date" value={end_date} onChange={(e) => setEndDate(e.target.value)} />
         </label>
-        <button type="submit" style={{ marginTop: "20px" }}>Add Medication</button>
+        <button type="submit" className="button-54" style={{ marginTop: "20px" }}>Add Medication</button>
       </form>
     </div>
   );
