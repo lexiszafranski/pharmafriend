@@ -7,17 +7,33 @@ export default function MedicationList() {
   const [dose, setDose] = useState('');
   const [start_date, setStartDate] = useState('');
   const [end_date, setEndDate] = useState('');
+  //const user = JSON.parse(localStorage.getItem('user')).userID;
+  //const { userID } = user;
   const navigate = useNavigate();
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
+
+  // Check if the user data and userID are available
+  const userID = user ? user.userID : null;
+
+  // Redirect to login if userID is not available
+  if (!userID) {
+    navigate('/');
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement your logic for adding medication here
-    axios.post('http://localhost:4000/add-medication', {name: name, dose: dose, start_date: start_date, end_date: end_date})
-    .then((data) => {
-      console.log(data)
-    })
-    navigate('/main');
-  }
+    if (userID) { // Only proceed if userID is not null
+      axios.post('http://localhost:4000/add-medication', { name, dose, start_date, end_date, userID })
+        .then((response) => {
+          console.log('Medication added:', response.data);
+          navigate('/main');
+        })
+        .catch((error) => console.error('Error adding medication:', error));
+    } else {
+      console.error('No user ID available');
+    }
+  };
 
   return (
     <div className="medication-form-container" style={{ padding: "20px" }}>

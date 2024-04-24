@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
@@ -7,16 +7,50 @@ function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setIsLoggedIn(true);
+      navigate('/main');
+    }
+  }, [navigate]);
+
+  function logout() {
+    localStorage.removeItem('user');  // This removes the user data from local storage
+    navigate('/login', { replace: true });  // Use 'replace' to avoid navigating back to '/main' via browser back button
+  }
+
+  
+  function isValidInput(input) {
+    return /^[a-zA-Z0-9@._-]+$/.test(input);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:4000', {email, password})
-      .then((data) => {
-        console.log(data);
-        setEmail('');
-        setPassword('');
+  
+
+    if (!isValidInput(email)) {
+      setError('Invalid input: Please use only valid characters.');
+      return;
+    }
+
+    axios.post('http://localhost:4000', { email, password })
+      .then(response => {
+        //console.log(response.data);
+        localStorage.setItem('user', JSON.stringify({ userID: response.data.userID }));
+        navigate('/main');
+      })
+      .catch(error => {
+        if (error.response && error.response.status === 400) {
+          setError('Invalid input: Please use only valid characters in email and password.'); // Specific error for 400
+        } else {
+          setError('Authentication failed. Please try again.'); // Generic error for other cases
+        }
       });
-    navigate('/main');
   };
 
   const handleFAQ = () => {
